@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<!-- 1. Vue的声明式渲染 -->
+<!-- 
+    Vue中的声明式渲染过程和其他渲染模板相似，可以简述为如下的步骤：
+    (1) 在html模板中创建指定id的html模板元素
+    (2) 在js代码部分中，创建一个Vue对象，并将该Vue对象和对应id的html模板元素进行绑定
+    (3) 绑定过程完成后，Vue对象的data成员被传递给绑定的html元素
+    (4) html元素按照自身指定的格式显示收到的data成员
+    (5) 声明式渲染结束
+-->
+
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>     <!-- 导入Vue.js的运行环境-->
+    </head>
+
+    <body>
+        <div id="app-1">    <!-- 所绑定的html元素，id为"app-1"-->
+            <p> {{message}}</p>
+        </div>
+    </body>                 
+
+    <script>                // 对应的js代码部分
+        var vm=new Vue({
+            el:"#app-1",    // 将Vue对象绑定到id为"app-1"的html元素上
+            data:{          // 仅有Vue对象中的data成员被传递给绑定的html元素进行渲染，因此data成员必须为键值对的纯文档形式
+                message: "这是一条提示消息"
+            }
+        })
+    </script>
+</html>
