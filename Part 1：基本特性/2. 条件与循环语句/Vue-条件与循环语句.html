@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>     <!-- 导入Vue.js的运行环境-->
+    </head>
+
+    <body>
+        <!-- 2. Vue的条件语句: v-if-->
+        <!--
+            Vue的条件语句的形式一般简单概述为: 在需要使用条件语句的html元素上，使用Vue指令v-if作为属性指定需要判断的数据成员
+        -->
+        <div id="app-1">
+            <p v-if="seen1">
+                hint1: Hello, Vue! 
+            </p>
+
+            <p v-if="seen2">
+                hint2: Hello, Vue!
+            </p>
+        </div>
+
+        <!-- 3. Vue的循环语句: v-for-->
+        <!--
+            假设要循环访问列表messages中每一个元素，则Vue的循环语句的形式一般简述为，在需要使用循环语句的html元素上，使用Vue指令v-for指定循环规则: <p v-for="message in messages"> {{message}}</p>
+        -->
+        <div id="app-2">
+            <p v-for="message in messages">
+                {{message}}
+            </p>
+        </div>
+
+    <script src="Vue-条件与循环语句.js"></script>        <!-- 导入对应的js代码文件-->
+</html>
