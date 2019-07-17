@@ -9,7 +9,7 @@
   + 在Vue对象中用el成员属性指定id，例如：el: "#app-1"
   需要特别注意，绑定时Vue对象中的id的值前需要加上'#'符号。
   
-  例如下面的html代码段和js代码段中，就将Vue对象vm和html元素/<div>绑定在一起。
+  例如下面的html代码段和js代码段中，就将Vue对象vm和html元素\<div\>绑定在一起。
 
   ```
   <!-- html代码段中的DOM/html元素-->
