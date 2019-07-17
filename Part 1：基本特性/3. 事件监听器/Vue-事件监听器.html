@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>     
+    </head>
+
+    <body>
+        <!-- html代码段中的DOM/html元素-->
+        <div id="app-1">
+            <p>
+                {{message}}
+            </p>
+
+            <button v-on:click="reverseMessage">
+                点击反转消息
+            </button>
+        </div>
+    </body>
+
+    <script>
+        // js代码中对应的Vue对象
+        var vm=new Vue({
+            el:"#app-1",
+            data:{
+                message:"Hello, Vue!"
+            },
+            methods: {
+                reverseMessage:function() {
+                    this.message=this.message.split('').reverse().join('')    // 和cpp类似，this指向成员方法所在的类的对象
+                }
+            },
+        })
+    </script>
+</html>
