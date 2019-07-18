@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>    
+    </head>
+
+    <body>
+        <div id="app-1"></div>
+    </body>
+
+    <script>
+        var app1=new Vue({
+            el:"#app-1",
+            data:{
+                message:"这是一条信息"
+            }
+        });
+
+        // 实例属性vm.$data和vm.$el
+        console.log(app1.$data);
+        console.log(app1.$el);
+
+        // 实例方法vm.$watch，当vm的属性message变化时，该实例方法会被自动调用
+        app1.$watch("message", function(newValue, oldValue) {
+            console.log("message属性的值被改变，改变后message = ", this.message); // 注意在js中访问
+        })
+
+    </script>
+</html>
