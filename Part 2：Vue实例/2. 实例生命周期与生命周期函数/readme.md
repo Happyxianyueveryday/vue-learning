@@ -102,8 +102,8 @@
   + created(): 这时Vue实例创建完成，实例中除了el属性，其他属性均已经与对应的数据绑定，并开始监听数据的变化。
   ![avatar](https://raw.githubusercontent.com/Happyxianyueveryday/vue-learning/master/Part%202%EF%BC%9AVue%E5%AE%9E%E4%BE%8B/2.%20%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/%E6%88%AA%E5%9B%BE%E6%96%87%E4%BB%B6/QQ%E6%88%AA%E5%9B%BE20190719234034.png)
   
-  + beforeMount(): 这时el属性已经与对应的DOM绑定，但是尚未将数据进行挂载。（挂载指的是使用vm.$data.message的真实值代替{{message}})
-   ![avatar](https://raw.githubusercontent.com/Happyxianyueveryday/vue-learning/master/Part%202%EF%BC%9AVue%E5%AE%9E%E4%BE%8B/2.%20%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/%E6%88%AA%E5%9B%BE%E6%96%87%E4%BB%B6/QQ%E6%88%AA%E5%9B%BE20190719234047.png)
+  + beforeMount(): 这时el属性已经与对应的DOM绑定，但是尚未将数据进行挂载。（挂载指的是使用vm.$data.message的真实值代替{{message}}）
+  ![avatar](https://raw.githubusercontent.com/Happyxianyueveryday/vue-learning/master/Part%202%EF%BC%9AVue%E5%AE%9E%E4%BE%8B/2.%20%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/%E6%88%AA%E5%9B%BE%E6%96%87%E4%BB%B6/QQ%E6%88%AA%E5%9B%BE20190719234047.png)
   
   + mounted(): 这时数据已经挂载。
    ![avatar](https://raw.githubusercontent.com/Happyxianyueveryday/vue-learning/master/Part%202%EF%BC%9AVue%E5%AE%9E%E4%BE%8B/2.%20%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/%E6%88%AA%E5%9B%BE%E6%96%87%E4%BB%B6/QQ%E6%88%AA%E5%9B%BE20190719234103.png)
