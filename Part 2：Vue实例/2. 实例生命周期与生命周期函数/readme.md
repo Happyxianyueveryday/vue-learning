@@ -105,13 +105,13 @@
   + beforeMount(): 这时el属性已经与对应的DOM绑定，但是尚未将数据进行挂载。（挂载指的是使用vm.$data.message的真实值代替{{message}}）
   ![avatar](https://raw.githubusercontent.com/Happyxianyueveryday/vue-learning/master/Part%202%EF%BC%9AVue%E5%AE%9E%E4%BE%8B/2.%20%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/%E6%88%AA%E5%9B%BE%E6%96%87%E4%BB%B6/QQ%E6%88%AA%E5%9B%BE20190719234047.png)
   
-  + mounted(): 这时数据已经挂载。
+  + mounted(): 这时数据已经挂载，即已经用Vue实例中的属性值代替了DOM元素的占位符。
    ![avatar](https://raw.githubusercontent.com/Happyxianyueveryday/vue-learning/master/Part%202%EF%BC%9AVue%E5%AE%9E%E4%BE%8B/2.%20%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/%E6%88%AA%E5%9B%BE%E6%96%87%E4%BB%B6/QQ%E6%88%AA%E5%9B%BE20190719234103.png)
   
-  + beforeUpdate():
+  + beforeUpdate(): 当实例属性发生变化时，这时虽然监听到了Vue实例属性的值发生变化，但是DOM中显示的还是对应属性的旧值，即尚未进行新值的挂载。
    ![avatar](https://raw.githubusercontent.com/Happyxianyueveryday/vue-learning/master/Part%202%EF%BC%9AVue%E5%AE%9E%E4%BE%8B/2.%20%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/%E6%88%AA%E5%9B%BE%E6%96%87%E4%BB%B6/QQ%E6%88%AA%E5%9B%BE20190719234103.png)
   
-  + updated():
+  + updated(): Vue实例属性的值发生变化后，且新值已经挂载，这时DOM中显示的就是发生变化的属性的最新值。
    ![avatar](https://raw.githubusercontent.com/Happyxianyueveryday/vue-learning/master/Part%202%EF%BC%9AVue%E5%AE%9E%E4%BE%8B/2.%20%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/%E6%88%AA%E5%9B%BE%E6%96%87%E4%BB%B6/QQ%E6%88%AA%E5%9B%BE20190719234158.png)
    
   
