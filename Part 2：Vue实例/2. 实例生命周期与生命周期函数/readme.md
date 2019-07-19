@@ -1,7 +1,8 @@
   ## 2. 实例生命周期和生命周期函数
   
   ### 2.1 生命周期和生命周期函数详解
-  Vue的生命周期函数有beforeCreate()和created()，beforeMount()和mounted()，beforeUpdate()和updated()，beforeDestroy()和destroyed()总共四组，这四组生命周期函数与Vue实例的生命周期的关系如下图。
+  Vue的生命周期函数有beforeCreate()和created()，beforeMount()和mounted()，beforeUpdate()和updated()，beforeDestroy()和destroyed()总共四组，这四组生命周期钩子函数都是Vue实例的成员方法。
+  这四组生命周期函数与Vue实例的生命周期的关系如下图。
   
   ![avatar](https://cn.vuejs.org/images/lifecycle.png)
   
@@ -16,7 +17,80 @@
   下面以一个示例来详细解释各个生命周期钩子发生的时间，该示例的核心源代码为：
   
   ```
+  <body>
+        <div id="app-1">
+            {{message}}
+        </div>
+    </body>
+
+    <script>
+        var vm=new Vue({
+            el:"#app-1",
+
+            data:{
+                message:"这是一条通知信息"
+            },
+
+            beforeCreate() {
+                console.log("beforeCreate: \n");
+                console.log("el = ", this.$el);
+                console.log("data = ", this.$data);
+                console.log("");
+            },
+
+            created() {
+                console.log("created: \n");
+                console.log("el = ", this.$el);
+                console.log("data = ", this.$data);
+                console.log("");
+            },
+
+            beforeMount() {
+                console.log("beforeMount: \n");
+                console.log("el = ", this.$el);
+                console.log("data = ", this.$data);
+                console.log("");
+            },
+
+            mounted() {
+                console.log("mounted: \n");
+                console.log("el = ", this.$el);
+                console.log("data = ", this.$data);
+                console.log("");
+            },
+
+            beforeUpdate() {
+                console.log("beforeUpdate: \n");
+                console.log("el = ", this.$el);
+                console.log("data = ", this.$data);
+                console.log("");
+            },
+
+            updated() {
+                console.log("updated: \n");
+                console.log("el = ", this.$el);
+                console.log("data = ", this.$data);
+                console.log("");
+            },
+
+            beforeDestroy() {
+                console.log("beforeDestory: \n");
+                console.log("el = ", this.$el);
+                console.log("data = ", this.$data);
+                console.log("");
+            },
+
+            destroyed() {
+                console.log("destoryed: \n");
+                console.log("el = ", this.$el);
+                console.log("data = ", this.$data);
+                console.log("");
+            },
+        })
+    </script>
   ```
+  
+  运行上述代码，可见的结果是：
   
   
   
