@@ -2,7 +2,7 @@
 
   本部分主要记录一些华为终端移动端实习中接触的Vue项目中学到的项目实践知识，因为华为对内部源码有保密标准，因此本文档中所用的示例一般均为自己写的示例代码，不会涉及到华为的内部源码。
   
-  ### 1. vue-cli脚手架项目结构介绍
+  ### 1. vue-cli脚手架项目结构与常用指令
   本处作为入门介绍，主要介绍脚手架项目下的src文件夹，该文件夹的结构如下：
   ![avatar](https://raw.githubusercontent.com/Happyxianyueveryday/vue-learning/master/%E5%8D%8E%E4%B8%BA%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20190724223120.png)
   
@@ -10,12 +10,22 @@
   + components: Vue组件文件夹
   + 
   
-  ### 2. vue-cli的组件标准写法
-  vue-cli中的组件由三个标准部分组成：<template>, <script>和<style>部分组成。
-  + <template>中包含该组件的html模板
-  + <script>中包含该组件的Vue定义
+  常用的指令包括：
+  + $npm install: 安装所有的依赖包，观察到项目中没有node_modules文件夹时首先使用该命令
+  + $npm install 
+  
+  
+  ### 2. Vue单文件组件
+  Vue的单文件组件由三个标准部分组成：<template>, <script>和<style>部分组成。
+  + <template>中包含该组件的html模板，其他组件使用<组件名>的形式导入当前组件的html模板
+  + <script>中包含该组件的Vue定义，其他组件使用import语句导入当前组件的Vue定义
   + <style>中包含该组件的css布局
   其中关于<script>中组件Vue的定义方法，请参见下面的导出组件部分。
+  
+  下面是一个非常经典的Vue计数器组件的标准vue-cli组件写法。
+  
+  ```
+  ```
   
   ### 3. 导出组件: export和export default
   在vue-cli脚手架项目中，通常声明的组件需要进行导出，通常使用export或者export default语句进行导出。export和export default的主要区别在于：
