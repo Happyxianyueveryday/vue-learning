@@ -3,7 +3,8 @@
   本部分主要记录一些华为终端移动端实习中接触的Vue项目中学到的项目实践知识，因为华为对内部源码有保密标准，因此本文档中所用的示例一般均为自己写的示例代码，不会涉及到华为的内部源码。
   
   ### 1. vue-cli脚手架项目结构与常用指令
-  本处作为入门介绍，主要介绍脚手架项目下的src文件夹，该文件夹的结构如下：
+  本处作为入门介绍，主要介绍脚手架项目下的src文件夹，该文件夹的结构如下：  
+  
   ![avatar](https://raw.githubusercontent.com/Happyxianyueveryday/vue-learning/master/%E5%8D%8E%E4%B8%BA%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20190724223120.png)
   
   + asset: 静态资源文件夹
@@ -12,7 +13,7 @@
   
   常用的指令包括：
   + $npm install: 安装所有的依赖包，观察到项目中没有node_modules文件夹时首先使用该命令
-  + $npm install 
+  + $npm run dev: 构建和执行项目，观察到项目中已经存在node_modules文件夹时首先使用该命令
   
   
   ### 2. Vue单文件组件
