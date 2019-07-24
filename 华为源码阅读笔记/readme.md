@@ -20,7 +20,7 @@
   Vue的单文件组件由三个标准部分组成：<template>, <script>和<style>部分组成。
   + <template>中包含该组件的html模板，模板中只能含有一个html元素，且该html元素的id属性必须和当前的Vue组件同名，其他组件使用<组件名>的形式导入当前组件的html模板
   + <script>中包含该组件的Vue定义，其他组件使用import语句导入当前组件的Vue定义
-  + <style>中包含该组件的css布局
+  + <style>中包含该组件的css布局  
   其中关于<script>中组件Vue的定义方法，请参见下面的导出组件部分。
   
   下面是一个非常经典的Vue计数器组件的标准vue-cli组件写法。
