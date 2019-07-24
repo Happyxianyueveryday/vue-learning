@@ -18,7 +18,7 @@
   
   ### 2. Vue单文件组件
   Vue的单文件组件由三个标准部分组成：<template>, <script>和<style>部分组成。
-  + <template>中包含该组件的html模板，其他组件使用<组件名>的形式导入当前组件的html模板
+  + <template>中包含该组件的html模板，模板中只能含有一个html元素，且该html元素的id属性必须和当前的Vue组件同名，其他组件使用<组件名>的形式导入当前组件的html模板
   + <script>中包含该组件的Vue定义，其他组件使用import语句导入当前组件的Vue定义
   + <style>中包含该组件的css布局
   其中关于<script>中组件Vue的定义方法，请参见下面的导出组件部分。
@@ -26,6 +26,31 @@
   下面是一个非常经典的Vue计数器组件的标准vue-cli组件写法。
   
   ```
+  <template>
+    <div id="ChildCom">    
+        <p>{{count}}</p>
+        <button v-on:click="onClickAction">点击增加计数</button>
+    </div>
+</template>
+
+<script>
+export default {
+    name: "ChildCom",
+    data() {
+        return {
+            count: 0  
+        }
+    },
+    methods: {
+        onClickAction() {
+            this.count+=1;  // js的函数this指针总是指向调用该函数的对象，而Vue实例的methods作为实例方法，总是被Vue实例调用
+        }  
+    },
+}
+</script>
+
+<style>
+</style>
   ```
   
   ### 3. 导出组件: export和export default
@@ -37,11 +62,25 @@
   通常在vue-cli的项目结构下，我们推荐一个vue文件中仅存在一个组件，直接使用export default语句进行导出。
   
   ```
-  
+  // ./ChildCom.vue
+  export default {
+    name: "ChildCom",
+    data() {
+        return {
+            count: 0  
+        }
+    },
+    methods: {
+        onClickAction() {
+            this.count+=1;  // js的函数this指针总是指向调用该函数的对象，而Vue实例的methods作为实例方法，总是被Vue实例调用
+        }  
+    },
+}
   ```
   
   则在其他的组件中需要使用该组件时，只需要使用import语句即可，注意导入使用export语句导出的对象时需要加上大括号。
   ```
+  import ChildCom from './ChildCom';
   ```
   
   
@@ -51,11 +90,63 @@
   + 在html模板中，将父组件的这些计算属性作为html元素的属性值传入子组件中。
   + 完成父子组件的动态组装。
   
-  下面提供一个简单的计数器示例，其中子组件通过props获取父组件的消息，然后显示获取的消息，当点击父组件的按钮反转消息后，子组件显示的消息也随之反转。
+  下面提供一个简单的父子组件动态组装示例。
   
+  ```
+  // 子组件
+  <template>
+    <div id="ChildCom">
+        <p>{{value}}</p>
+    </div>
+</template>
+
+<script>
+export default {
+    name: "ChildCom",
+    props: {
+        value:0    // value作为props所定义的自定义属性
+    },
+}
+</script>
+
+<style>
+</style>
+  ```
   
-  
-  
+  ```
+  // 父组件
+  <template>
+    <div id="FatherCom">
+        <!-- 调用子组件ChildCom，该组件的html元素的属性旧对应于props-->
+        <ChildCom v-bind:value="fullName"></ChildCom>    <!-- 注意动态绑定html属性必须使用v-bind指令-->
+    </div>
+</template>
+
+<script>
+import ChildCom from './ChildCom';
+
+export default {
+    name: "FatherCom",
+    data() {
+        return {
+            firstName: "Mary",
+            secondName: "Annie"
+        }
+    },
+    components: {
+        ChildCom
+    },
+    computed: {
+        fullName() {  // 计算属性getter
+            return this.firstName+" "+this.secondName;
+        }
+    },
+}
+</script>
+
+<style>
+</style>
+  ```
   
   ### 5. 全局状态管理模式——Vuex简单快速入门
   
