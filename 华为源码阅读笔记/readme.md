@@ -3,9 +3,21 @@
   本部分主要记录一些华为终端移动端实习中接触的Vue项目中学到的项目实践知识，因为华为对内部源码有保密标准，因此本文档中所用的示例一般均为自己写的示例代码，不会涉及到华为的内部源码。
   
   ### 1. vue-cli脚手架项目结构介绍
-  待补充。
+  本处作为入门介绍，主要介绍脚手架项目下的src文件夹，该文件夹的结构如下：
+  ![avatar](https://raw.githubusercontent.com/Happyxianyueveryday/vue-learning/master/%E5%8D%8E%E4%B8%BA%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20190724223120.png)
   
-  ### 2. 导出组件: export和export default
+  + asset: 静态资源文件夹
+  + components: Vue组件文件夹
+  + 
+  
+  ### 2. vue-cli的组件标准写法
+  vue-cli中的组件由三个标准部分组成：<template>, <script>和<style>部分组成。
+  + <template>中包含该组件的html模板
+  + <script>中包含该组件的Vue定义
+  + <style>中包含该组件的css布局
+  其中关于<script>中组件Vue的定义方法，请参见下面的导出组件部分。
+  
+  ### 3. 导出组件: export和export default
   在vue-cli脚手架项目中，通常声明的组件需要进行导出，通常使用export或者export default语句进行导出。export和export default的主要区别在于：
   + 一个vue文件中可以存在多个export语句，但是仅能存在一个export default语句。
   + 导入使用export语句导出的对象时，需要在对象名外加上大括号；而export default的情况则不用。
@@ -22,7 +34,7 @@
   ```
   
   
-  ### 3. 父子组件动态组装
+  ### 4. 父子组件动态组装
   父子组件的动态组装要求当父组件的数据发生变化时，数据的变化能够自然的传导至子组件，通常使用如下的动态组装进行父子组件的动态组装。
   + 将子组件的props属性在父组件中声明为计算属性。
   + 在html模板中，将父组件的这些计算属性作为html元素的属性值传入子组件中。
@@ -34,12 +46,12 @@
   
   
   
-  ### 4. 全局状态管理模式——Vuex简单快速入门
+  ### 5. 全局状态管理模式——Vuex简单快速入门
   
   
-  ### 5. 子组件到父组件的事件流——$emit方法
+  ### 6. 子组件到父组件的事件流——$emit方法
   
-  ### 6. 
+  ### 7. 
   
   
   ### 附录：其他组件化的注意事项与问题
