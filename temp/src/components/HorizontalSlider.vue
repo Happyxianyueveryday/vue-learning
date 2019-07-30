@@ -28,7 +28,9 @@
 			</ul>
 		</nav>
 
-		<router-view></router-view>    <!-- 无限新闻内容滚动栏渲染在此处-->
+		<div id="newsList">
+			<router-view></router-view>    <!-- 无限新闻内容滚动栏渲染在此处-->
+		</div>
 	</div>
 </template>
 
@@ -80,6 +82,25 @@ export default {
 #nav ul li {                  /* 设置每个<ul>中的<li>元素*/
   display: inline-block;      /* 将各个块级元素设置为行内元素，从而使得各个<li>的内容可以在同一行显示*/
   margin: 0 15px;             /* 设置每个<li>之间的距离*/
+}
+
+/* 下面配置横向导航栏和新闻展示列表的布局，由于这两个部分的滑动方式不同，因此一定是在本文件中进行布局的设置，而不是在NavBarCom文件中，NavBarCom文件中仅能设置两个组件的整体样式*/
+/* 固定定位fixed相对于浏览器窗口进行定位，而绝对定位absolute相对于父组件进行定位，而且父组件变化时，当前组件的定位也会随之动态改变*/
+
+#nav {
+    width: 100%;
+    position: fixed;      /* 页面内容部分使用固定定位，固定定位使用top, bottom, left, right四个属性进行定位*/
+    top: 6%;              /* 由于顶部导航栏占高度6%，因此横向滚动栏距离顶部6%*/
+}
+
+#newsList {
+    width: 100%;
+    position: fixed;   /* 页面内容部分使用固定定位，固定定位使用top, bottom, left, right四个属性进行定位*/
+	/* 需要特别注意，以下的四项: top, bottom, overflow-x和overflow-y都是使用固定定位fixed中所必须填的参数*/
+    top: 11%;          /* 滚动部分距离浏览器顶端11%*/
+	bottom: 10%;       /* 滚动部分距离浏览器底端10%*/ 
+	overflow-y:scroll; /* 允许y轴滚动*/
+    overflow-x:hidden; /* 禁止x轴滚动*/
 }
 </style>
 
