@@ -5,30 +5,30 @@
     	<nav id="nav">
 			<ul class="clear">
 				<li>
-					<router-link to="/" style="font-size:x-large;" v-on:click.native="onclick(1)" v-bind:style="{color: font_color_1}">时事</router-link>
+					<router-link to="/navigation/news/shishi" style="font-size:x-large;" v-on:click.native="onclick(1)" v-bind:style="{color: font_color_1}">时事</router-link>
 				</li>
 				<li class="active">
-					<router-link to="/" style="font-size:x-large;" v-on:click.native="onclick(2)" v-bind:style="{color: font_color_2}">体育</router-link>
+					<router-link to="/navigation/news/tiyu" style="font-size:x-large;" v-on:click.native="onclick(2)" v-bind:style="{color: font_color_2}">体育</router-link>
 				</li>
 				<li>
-					<router-link to="/" style="font-size:x-large;" v-on:click.native="onclick(3)" v-bind:style="{color: font_color_3}">娱乐</router-link>
+					<router-link to="/navigation/news/yule" style="font-size:x-large;" v-on:click.native="onclick(3)" v-bind:style="{color: font_color_3}">娱乐</router-link>
 				</li>
 				<li>
-					<router-link to="/" style="font-size:x-large;" v-on:click.native="onclick(4)" v-bind:style="{color: font_color_4}">科技</router-link>
+					<router-link to="/navigation/news/keji" style="font-size:x-large;" v-on:click.native="onclick(4)" v-bind:style="{color: font_color_4}">科技</router-link>
 				</li>
 				<li>
-					<router-link to="/" style="font-size:x-large;" v-on:click.native="onclick(5)" v-bind:style="{color: font_color_5}">教育</router-link>
+					<router-link to="/navigation/news/jiaoyu" style="font-size:x-large;" v-on:click.native="onclick(5)" v-bind:style="{color: font_color_5}">教育</router-link>
 				</li>
 				<li>
-					<router-link to="/" style="font-size:x-large;" v-on:click.native="onclick(6)" v-bind:style="{color: font_color_6}">房产</router-link>
+					<router-link to="/navigation/news/fangchan" style="font-size:x-large;" v-on:click.native="onclick(6)" v-bind:style="{color: font_color_6}">房产</router-link>
 				</li>
 				<li>
-					<router-link to="/" style="font-size:x-large;" v-on:click.native="onclick(7)" v-bind:style="{color: font_color_7}">财经</router-link>
+					<router-link to="/navigation/news/caijing" style="font-size:x-large;" v-on:click.native="onclick(7)" v-bind:style="{color: font_color_7}">财经</router-link>
 				</li>
 			</ul>
 		</nav>
 
-		<router-view></router-view>
+		<router-view></router-view>    <!-- 无限新闻内容滚动栏渲染在此处-->
 	</div>
 </template>
 
