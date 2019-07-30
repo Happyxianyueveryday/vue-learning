@@ -64,7 +64,7 @@ export default {
             fourthButtonImgClicked: "./../../static/icon_me_clicked.png",
 
             // 导航栏按钮路由地址
-            firstButtonUrl: "/navigation/news",
+            firstButtonUrl: "/navigation/news/shishi",
             secondButtonUrl: "/navigation/recommend",
             thirdButtonUrl: "/navigation/track",
             fourthButtonUrl: "/navigation/me"
@@ -131,15 +131,9 @@ export default {
     opacity: 0.8;      /* 顶部导航栏色彩透明度*/
 }
 
-#ContentPart {
-    width: 100%;
-    position: absolute;   /* 页面内容部分使用绝对定位，绝对定位使用top, bottom, left, right四个属性进行定位*/
-    top: 6%;              /* 由于顶部导航栏占高度6%，因此横向滚动栏距离顶部6%*/
-}
-
 #NavBarPart {
     width: 100%;       /* 底部导航栏占满屏幕宽度*/
-    position: fixed;   /* 底部导航栏位置设置为相对于浏览器固定*/
+    position: fixed;   /* 底部导航栏位置设置为相对于浏览器固定*/    
     bottom: 0;         /* 底部导航栏显示在最底端，距离下边缘距离为0px*/
 }
 </style>
