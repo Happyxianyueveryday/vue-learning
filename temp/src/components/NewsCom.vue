@@ -57,4 +57,4 @@ export default {
 #NewsCom {
     width: 100%
 }
-</style>
+</style> 
