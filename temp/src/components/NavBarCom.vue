@@ -8,7 +8,7 @@
         </div>
 
         <!-- 2. 页面内容组件-->
-        <div id="SliderPart">
+        <div id="ContentPart">
             <router-view></router-view>
         </div>
 
@@ -123,7 +123,7 @@ export default {
 <style scoped>
 #TopBarPart {
     width: 100%;       /* 顶部导航栏占满屏幕宽度*/
-    height: 7%;        /* 顶部导航栏占屏幕高度7%*/
+    height: 6%;        /* 顶部导航栏占屏幕高度6%*/
     position: fixed;   /* 底部导航栏位置设置为相对于浏览器固定*/
     top: 0;            /* 顶部导航栏显示在最顶端，距离上边缘距离为0px*/
     background: #1296db;  /* 顶部导航栏颜色*/ 
@@ -131,9 +131,10 @@ export default {
     opacity: 0.8;      /* 顶部导航栏色彩透明度*/
 }
 
-#SliderPart {
-    position: absolute;   /* 横向滚动栏使用绝对定位，绝对定位使用top, bottom, left, right四个属性进行定位*/
-    top: 7%;              /* 由于顶部导航栏占高度7%，因此横向滚动栏距离顶部7%*/
+#ContentPart {
+    width: 100%;
+    position: absolute;   /* 页面内容部分使用绝对定位，绝对定位使用top, bottom, left, right四个属性进行定位*/
+    top: 6%;              /* 由于顶部导航栏占高度6%，因此横向滚动栏距离顶部6%*/
 }
 
 #NavBarPart {
