@@ -6,9 +6,9 @@
 
 <template>
     <div id="NewsCom">
-        <div class="weui-panel weui-panel_access" v-for="element in list_all" v-bind:key="element.index">
+        <div class="weui-panel weui-panel_access" v-for="element in newslist" v-bind:key="element.index">
             <div class="weui-panel__bd">
-                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                <a v-on:click="reader(element.index)" class="weui-media-box weui-media-box_appmsg">
                     <div class="weui-media-box__hd">
                         <img class="weui-media-box__thumb" v-bind:src="element.img" alt="">
                     </div>
@@ -21,7 +21,7 @@
         </div>
         <div class="weui-panel__ft">
             <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
-                <div class="weui-cell__bd">加载更多</div>
+                <div class="weui-cell__bd" v-on:click="getMoreData">加载更多</div>
                 <span class="weui-cell__ft"></span>
             </a>    
         </div>
@@ -32,24 +32,37 @@
 export default {
     name: "NewsCom",
     data() {
+        // newslist: 从后端获取初始的微博文章标题滑动列表
+        // note: 在后端完成后，需要重写此属性，根据微博的类别this.$route.params.title从后端获取初始的若干个数据
         return {
-            list_all: [
-                {index: 1, title:"标题1", summary:"简介1", img:"./../../static/icon_news.png"},
-                {index: 2, title:"标题2", summary:"简介2", img:"./../../static/icon_news.png"},
-                {index: 3, title:"标题3", summary:"简介3", img:"./../../static/icon_news.png"},
-                {index: 4, title:"标题4", summary:"简介4", img:"./../../static/icon_news.png"},
-                {index: 5, title:"标题5", summary:"简介5", img:"./../../static/icon_news.png"},
-                {index: 6, title:"标题6", summary:"简介6", img:"./../../static/icon_news.png"},
-                {index: 7, title:"标题7", summary:"简介7", img:"./../../static/icon_news.png"},
-                {index: 8, title:"标题8", summary:"简介8", img:"./../../static/icon_news.png"},
-                {index: 9, title:"标题9", summary:"简介9", img:"./../../static/icon_news.png"},
-                {index: 10, title:"标题10", summary:"简介10", img:"./../../static/icon_news.png"},
-                {index: 11, title:"标题11", summary:"简介11", img:"./../../static/icon_news.png"},
-                {index: 12, title:"标题12", summary:"简介12", img:"./../../static/icon_news.png"},
-                {index: 13, title:"标题13", summary:"简介13", img:"./../../static/icon_news.png"},
+            newslist: [
+                {index: 1, title:"标题1", summary:"简介1", img:"./../../static/icon_news.png"},    // index为微博的唯一id
+                {index: 2, title:"标题1", summary:"简介1", img:"./../../static/icon_news.png"},
+                {index: 3, title:"标题1", summary:"简介1", img:"./../../static/icon_news.png"},
+                {index: 4, title:"标题1", summary:"简介1", img:"./../../static/icon_news.png"},
+                {index: 5, title:"标题1", summary:"简介1", img:"./../../static/icon_news.png"},
+                {index: 6, title:"标题1", summary:"简介1", img:"./../../static/icon_news.png"},
+                {index: 7, title:"标题1", summary:"简介1", img:"./../../static/icon_news.png"},
+                {index: 8, title:"标题1", summary:"简介1", img:"./../../static/icon_news.png"},
             ],
         }
     },
+    methods: {
+        // getMoreData: 点击加载更多按钮时从后端api请求更多的微博文章标题等
+        // note: 在后端完成后，需要重写该方法，根据微博的类别this.$route.params.title从后端获取数据
+        getMoreData() {
+            let i=0;
+            for(i=0;i<5;i++)
+            {
+                this.newslist.push({index: 9, title:"标题1", summary:"简介1", img:"./../../static/icon_news.png"});
+            }
+        },
+
+        // reader: 点击滑动列表中的微博文章标题时，跳转到阅读器，展示微博的具体内容
+        reader(index) {
+            this.$router.push('/artical/'+index);   // 用户点击文章内容时，直接进行全屏组件跳转，将微博的唯一标识index作为参数传递给微博阅读器组件ArticalCom
+        } 
+    }
 } 
 </script>
 
@@ -57,4 +70,4 @@ export default {
 #NewsCom {
     width: 100%
 }
-</style> 
+</style>
