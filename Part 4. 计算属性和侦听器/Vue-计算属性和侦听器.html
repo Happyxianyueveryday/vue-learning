@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+
+    <body>
+        <div id="app1">
+            <p> 通过计算属性获取的时间戳: {{timestamp}}.</p>
+            <button v-on:click="timestampByMethod">点击按钮通过方法获取时间戳</button> 
+
+            <p> 这里获取到的reverseStr的值为: {{reverseStr}}，console中观察getter是否被调用？</p>
+            <button v-on:click="changeReverseStr">点击按钮修改reverseStr属性，console中观察setter是否被调用？</button> 
+        </div>
+    </body>
+</html>
+
+<script>
+    var app1=new Vue({
+        el: "#app1",
+        data: {
+            str: "Hello, World!",
+        },
+        computed: {
+            // 作为计算属性的timestamp
+            // 附注: 计算属性和方法在功能上类似，但是在具体性质上非常不同，具体而言，计算属性是带有缓存的，除非该计算属性所涉及到的响应式属性发生改变，否则会直接返回上次的缓存结果；而方法是不具有缓存的，每次调用必定重新计算一遍
+            timestamp() {
+                let res=Date.now();
+                console.log(res);
+                return res;    // Date.now()不是响应式的属性，因此多次调用返回的总是第一次调用时的时间
+            },
+
+            // 计算属性reverseStr的getter和setter
+            reverseStr: {
+                get() {    // 计算属性reverseStr的getter，getter将在任何使用到计算属性reverseStr的地方被隐式调用
+                    console.log("getter被调用");
+                    return this.str.split('').reverse().join('');
+                },
+
+                set(newvalue) {     // 计算属性reverseStr的setter，setter将在任何修改计算属性reverseStr的地方被隐式调用，例如: vm.reverseStr=""
+                    this.str=newvalue;
+                    console.log("setter被调用");
+                }
+            },
+        },
+        methods: {
+            // 作为方法的timestamp
+            timestampByMethod() {
+                console.log(Date.now());   // Date.now()虽然不是响应式的，但是方法是无缓存的，总是在每次被调用时重新计算并且执行一遍，因此每次执行都返回当前的时间 
+            },
+
+            // 修改计算属性reverseStr
+            changeReverseStr() {
+                this.reverseStr="abc";
+            }
+        }
+    })
+</script>
