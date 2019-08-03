@@ -1,0 +1,38 @@
+<!-- 5. Vue的class和style绑定，又分别称为类型绑定和样式绑定-->
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+    
+<body>
+    <div id="app2">
+        <div v-bind:class="divclass">标题</div>
+        <button v-on:click="changeClass">点击切换标题的class</button>
+    </div>
+</body>
+    
+<script>
+    var vm1=new Vue({
+        el: "#app2",
+        data: {
+            divclass: "blackclass",
+        },
+        methods: {
+            changeClass() {
+                this.divclass="yellowclass";
+            }
+        },
+    })
+</script>
+
+<style>
+    .blackclass {     /* 注意css的class选择器以.开头，id选择器以#开头*/
+        color: black;
+        font-size: 18px;
+    }
+
+    .yellowclass {
+        color: yellow;
+        font-size: 18px;
+    }
+</style>
