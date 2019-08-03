@@ -1,0 +1,63 @@
+<!-- 6. Vue条件渲染-->
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+
+<body>
+    <div id="app1">
+        <!-- 1. 最主要的条件渲染表达式就是: v-if，v-else-if和v-else，这三个Vue指令的值可以是关于值的任意js表达式--->
+        <div v-if="flag===1">
+            <p>变量flag的值为1</p>
+        </div>
+
+        <div v-else-if="flag===2">
+            <p>变量flag的值为2</p>
+        </div>
+
+        <div v-else-if="flag===3">   <!-- ===为严格相等，禁止类型转换-->
+            <p>变量flag的值为3</p>
+        </div>
+
+        <div v-else>   
+            <p>变量flag的值为除了1，2，3外的其他值</p>
+        </div>
+    </div>
+
+    <!-- 2. Vue的高效复用机制，当v-if指令所绑定的Vue实例属性发生改变时，Vue只会重新渲染v-if所在的DOM，其他的DOM则会直接复用-->
+    <!-- 例如在下面的例子中，点击button后，只有<p>进行了重新渲染，其他的<img>，<button>等组件都会复用原来点击前的组件-->
+    <div id="app2">
+        <div v-if="flag==1">
+            <img src="https://cn.vuejs.org/images/logo.png">
+            <p>变量flag的值为1</p>
+            <button v-on:click="change">点击逆转flag的值</button>
+        </div>
+        <div v-else>
+            <img src="https://cn.vuejs.org/images/logo.png">
+            <p> 变量flag的值不为1</p>
+            <button v-on:click="change">点击逆转flag的值</button>
+        </div>
+    </div>
+</body>
+
+<script>
+    var vm=new Vue({
+        el: "#app1",
+        data: {
+            flag: 6,
+        }
+    });
+
+    var vm=new Vue({
+        el: "#app2",
+        data: {
+            flag:1,
+        },
+        methods: {
+            change() {
+                this.flag=!this.flag;
+            }
+        },
+    })
+</script>
