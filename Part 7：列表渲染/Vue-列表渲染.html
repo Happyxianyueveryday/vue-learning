@@ -1,0 +1,100 @@
+<!-- 7. Vue列表渲染-->
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- A. v-for指令的使用：v-for指令在遍历中最多可以指定三个元素参数，这些参数不需要死记硬背，只需要按照如下的示例代码进行实验一次即可得到三个参数的具体含义 -->
+    <div id="app1">
+        <!-- 1. 单参数遍历，Vue指定的单参数为属性值中的每个键值对元素-->
+        <p v-for="item in items">
+            {{items}}
+        </p>
+
+        <!-- 2. 双参数遍历，Vue指定的双参数从前到后依次为属性值，属性键-->
+        <p v-for="(value, key) in kvlist">
+            {{value}}: {{key}}
+        </p>
+
+        <!-- 3. 三参数遍历，Vue指定的三参数从前到后依次为属性值，属性键和内部索引-->
+        <p v-for="(value, key, index) in kvlist">
+            {{value}}: {{key}}: {{index}}
+        </p>
+    </div>
+
+
+    <!-- B. v-for的就地更新原则: 当列表元素发生改变时，仅仅是改变列表元素的显示。因为DOM并没有和数据绑定，因此DOM将会被就地复用，不会被改变-->
+    <div id="app2">
+        <div v-for="(value, key) in items">    <!--注意v-for所在的DOM包含与列表元素对应的一个文本框，当元素发生改变时，文本框不会随着元素而发生改变-->
+            <p>{{value}}</p>
+            <input>
+        </div>
+        <button v-on:click="changeSeq">点击交换数组元素的顺序</button>
+    </div>
+
+    <!-- C. v-for和v-if共同使用进行列表的筛选和渲染-->
+    <div id="app3">
+        <!-- 当v-for和v-if处于同一个DOM中，因为v-for的优先级高于v-if，因此相当于v-for在外层，v-if在内层，遍历时对每个元素应用v-if指令-->
+        <div v-for="item in items" v-if="item.text!='元素1'">   <!-- 字符串中表示字符串只需要分别使用单引号和双引号两种不同写法即可-->
+            {{item.text}}
+        </div>
+
+        <!-- 若要将v-if放到外层，而v-for在内层，则需要将v-if语句放到外层DOM中，而将v-for语句放到内层DOM中-->
+        <template v-if="sign">
+            <div v-for="item in items">
+                {{item.text}}
+            </div>
+        </template>
+    </div>
+
+</body>
+
+
+<script>
+    var vm=new Vue({
+        el: "#app1",
+        data: {
+            items: {
+                name1: "对象1",
+                name2: "对象2",
+                name3: "对象3",
+            },
+
+            kvlist: {
+                key1: "value1",
+                key2: "value2",
+                key3: "value3",
+            },
+        }
+    })
+
+    var vm2=new Vue({
+        el: "#app2",
+        data: {
+            items: {
+                key1: "value1",
+                key2: "value2",
+            }
+        },
+        methods: {
+            changeSeq() {
+                let temp=this.items.key1;
+                this.items.key1=this.items.key2;
+                this.items.key2=temp;
+            }
+        },
+    })
+
+    var vm3=new Vue({
+        el: "#app3",
+        data: {
+            sign: false,
+            items: [
+                {text: "元素1"},
+                {text: "元素2"},
+                {text: "元素3"},
+            ],
+        }
+    })
+</script>
