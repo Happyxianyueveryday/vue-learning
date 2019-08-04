@@ -1,0 +1,76 @@
+<!-- 7. Vue列表渲染-->
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app1">
+        <!-- v-for指令在遍历中最多可以指定三个元素参数，这些参数不需要死记硬背，只需要按照如下的示例代码进行实验一次即可得到三个参数的具体含义 -->
+        <!-- 1. 单参数遍历，Vue指定的单参数为属性值中的每个键值对元素-->
+        <p v-for="item in items">
+            {{items}}
+        </p>
+
+        <!-- 2. 双参数遍历，Vue指定的双参数从前到后依次为属性值，属性键-->
+        <p v-for="(value, key) in kvlist">
+            {{value}}: {{key}}
+        </p>
+
+        <!-- 3. 三参数遍历，Vue指定的三参数从前到后依次为属性值，属性键和内部索引-->
+        <p v-for="(value, key, index) in kvlist">
+            {{value}}: {{key}}: {{index}}
+        </p>
+    </div>
+
+
+    <div>
+        <!-- v-for的就地更新原则: 当列表元素发生改变时，仅仅是改变列表元素的显示。因为DOM并没有和数据绑定，因此DOM将会被就地复用，不会被改变-->
+        <div id="app2">
+            <div v-for="(value, key) in items">    <!--注意v-for所在的DOM包含与列表元素对应的一个文本框，当元素发生改变时，文本框不会随着元素而发生改变-->
+                <p>{{value}}</p>
+                <input>
+            </div>
+
+            <button v-on:click="changeSeq">点击交换数组元素的顺序</button>
+        </div>
+    </div>
+
+</body>
+
+
+<script>
+    var vm=new Vue({
+        el: "#app1",
+        data: {
+            items: {
+                name1: "对象1",
+                name2: "对象2",
+                name3: "对象3",
+            },
+
+            kvlist: {
+                key1: "value1",
+                key2: "value2",
+                key3: "value3",
+            },
+        }
+    })
+
+    var vm2=new Vue({
+        el: "#app2",
+        data: {
+            items: {
+                key1: "value1",
+                key2: "value2",
+            }
+        },
+        methods: {
+            changeSeq() {
+                let temp=this.items.key1;
+                this.items.key1=this.items.key2;
+                this.items.key2=temp;
+            }
+        },
+    })
+</script>
